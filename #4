@@ -1,0 +1,57 @@
+import tkinter
+
+# task 1
+print("Task 1\n")
+# print("Input sentence::")
+#
+# s1 = str(input())
+#
+# print(len(s1))
+
+line_1 = {("Иванов", "Математика", 5), ("Петров", "Физика", 3)}
+line_2 = {("Иванов", "Математика", 5), ("Иванов", "Физика", 4)}
+
+print("R1: ", line_1)
+print("R2: ", line_2)
+
+un = line_1.union(line_2)
+inters = line_1.intersection(line_2)
+
+diff = line_1.difference(line_2)
+
+print("\n", "Union: ", un, "\n", "intersection: ", inters, "\n", "Difference: ", diff)
+
+
+# task 2
+
+print("\nTask 2\n")
+
+weather = {
+1: {"obsv": "sun", "tmpr": "hotly", "hmdt": "high", "wind": "no"},
+2: {"obsv": "sun", "tmpr": "hotly", "hmdt": "high", "wind": "there is"},
+3: {"obsv": "overcast", "tmpr": "hotly", "hmdt": "high", "wind": "no"}
+}
+
+print("United\n\nWeather: ", weather)
+
+dict_1 = weather[1]
+dict_2 = weather[2]
+dict_3 = weather[3]
+
+
+print("Separated\n\nWeather 1: ", dict_1, "\nWeather 2: ", dict_2, "\nWeather 3: ", dict_3)
+
+
+# task 3
+
+print("\nTask 3\n")
+
+mult1 = {"Car", "Plane", "Boat", "Motorcycle"}
+mult2 = {"Very bad", "Bad", "Good", "Very good"}
+
+def decart(n1, n2):
+   return [(a,b) for a in n1 for b in n2]
+decart1 = decart(mult1, mult2)
+
+print("Decart product: ", decart1)
+
