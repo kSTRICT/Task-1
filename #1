@@ -1,0 +1,178 @@
+def factorial(n):
+    factor = 1
+    for i in range(1, n + 1):
+        factor *= i
+    return factor
+
+
+
+
+#variable check
+def int_check(text1):
+    while (True):
+        try:
+            v = int(input(str(text1)))
+        except ValueError:
+            print("Please try again: ")
+            continue
+        break
+    return v
+###
+
+#task select
+continue_check = 0
+while(True):
+    try:
+        continue_check = int(input("What task do you want to start from? Input from 1 to 4. (Input 0 to quit the program.)\n"))
+        print()
+    except ValueError:
+        print("Incorrect input.\n")
+        continue
+    if(continue_check < 0 or continue_check > 4):
+        print("Incorrect input.\n")
+        continue
+    break
+###
+
+
+
+
+# 1
+def first_task():
+    print("First task:\n")
+
+    a = int_check("a must be a number. Input a: ")
+    b = int_check("b must be a number. Input b: ")
+
+    if (a > b):
+        print(str(a) + " > " + str(b))
+    else:
+        if (a == b):
+            print(str(a) + " = " + str(b))
+        else:
+            print(str(a) + " < " + str(b))
+
+
+
+    while(True):
+        try:
+            continue_check = int(input("Do you want to continue to the second task (1) or rather quit (0)? \n"))
+            print()
+        except ValueError:
+            print("Incorrect input.\n")
+            continue
+        if(continue_check < 0 or continue_check > 1):
+            print("Incorrect input.\n")
+            continue
+        break
+    if(continue_check == 0):
+        print("Quitting...")
+        quit()
+    else:
+        print("Processing second task...\n")
+        second_task()
+
+
+# 2
+def second_task():
+    print("Second task:\n")
+
+
+    while(True):
+        try:
+            n = int(input("Input n: "))
+        except ValueError:
+            print("Try again. n must be a number > 0: ")
+            continue
+        if(n <= 0):
+            print("Try again. n must be a number > 0: ")
+            continue
+        break
+
+    fact = float(1.0)
+    sum = float(0)
+
+    print(factorial(n))
+
+    for i in range(1, n + 1):
+        sum += (3**i * factorial(i)) / (i**i)
+
+    print("Sum = " + str(sum))
+    while (True):
+        try:
+            continue_check = int(input("Do you want to continue to the third task (1) or rather quit (0)? \n"))
+            print()
+        except ValueError:
+            print("Incorrect input.\n")
+            continue
+        if (continue_check < 0 or continue_check > 1):
+            print("Incorrect input.\n")
+            continue
+        break
+    if (continue_check == 0):
+        print("Quitting...")
+        quit()
+    else:
+        print("Processing third task...\n")
+        third_task()
+#3
+def third_task():
+    print("Third task:\n")
+
+    first_number_task3 = int_check("Input first number: ")
+    second_number_task3 = int_check("Input second number: ")
+    product_task3 = int(0)
+
+    for i in range(1, first_number_task3 + 1):
+        product_task3 += second_number_task3
+
+    print("Product = " + str(product_task3))
+
+    while (True):
+        try:
+            continue_check = int(input("Do you want to continue to the fourth task (1) or rather quit (0)? \n"))
+            print()
+        except ValueError:
+            print("Incorrect input.\n")
+            continue
+        if (continue_check < 0 or continue_check > 1):
+            print("Incorrect input.\n")
+            continue
+        break
+    if (continue_check == 0):
+        print("Quitting...")
+        quit()
+    else:
+        print("Processing fourth task...\n")
+        fourth_task()
+
+#4
+def fourth_task():
+    print("Fourth task:\n")
+
+    number = int_check("Input a natural number: ")
+    divider = int_check("Input a divider: ")
+
+
+    result = 0
+    while (number >= divider):
+        number -= divider
+        result += 1
+    print("Fraction = " + str(result))
+    print("Remainder = " + str(number) + "\n")
+
+
+    print("This is the end of the program. Quitting...")
+    quit()
+
+if continue_check == 1:
+    first_task()
+if continue_check == 2:
+    second_task()
+if continue_check == 3:
+    third_task()
+if continue_check == 4:
+    fourth_task()
+if (continue_check == 0):
+    print("Quitting...")
+    quit()
