@@ -1,0 +1,123 @@
+def factorial(n):
+    abs(n)
+    if n in (0, 1):
+        return 1
+    return factorial(n-1) * n
+
+def natural(text):
+    while(True):
+        try:
+            value = int(input(text))
+            if value <= 0:
+                print("Try again")
+                continue
+            return value
+        except ValueError:
+            print("Try again")
+
+
+def sum_calculation(n):
+    suma = 0
+    for i in range(1, n + 1):
+        suma += (3**i * factorial(i)) / i**i
+    return suma
+
+def recursive_product(n1, n2):
+    if n1 == 0 or n2 == 0:
+        return 0
+    if n1 < n2:
+        n1, n2 = n2, n1
+    return n1 + recursive_product(n1, n2 - 1)
+
+def recursive_fraction(n1, n2):
+    if n2 == 0:
+        return "Error"
+    if n1 == 0:
+        return 0
+    if n1 - n2 >= n2: #and n1-n2 != 0:
+        return recursive_fraction(n1 - n2, n2) + 1
+    else:
+        return 1
+
+def task_5(n1, n2):
+    min = 0
+    if n1 < n2:
+        min = n1
+    if n1 > n2:
+        min = n2
+    if n1 == n2:
+        min = n1
+
+    for i in range(1, min + 1):
+        if n1 % min == 0 and n2 % min == 0:
+            return min
+        min -= 1
+
+
+    # task 1
+print("Task #1\n")
+
+n = natural("Input n > 0: ")
+
+sum = sum_calculation(n)
+
+print("Sum = ", sum)
+
+# task 2
+print("\nTask #2\n")
+
+
+first_number_t2 = natural("Input first number > 0: ")
+second_number_t2 = natural("Input second number > 0: ")
+
+product = recursive_product(first_number_t2, second_number_t2)
+
+
+
+print("Product = ", product)
+
+
+# task 3
+
+print("\nTask #3\n")
+
+first_number_t3 = natural("Input first number > 0: ")
+second_number_t3 = natural("Input second number > 0: ")
+
+if first_number_t3 < second_number_t3:
+    first_number_t3, second_number_t3 = second_number_t3, first_number_t3
+    print("First and second number have been replaced as first was less than second\n")
+
+fraction = recursive_fraction(first_number_t3, second_number_t3)
+
+print("Fraction = ", fraction)
+if str(fraction) != "Error":
+    remainder = first_number_t3 - fraction * second_number_t3
+    print("Remainder = ", remainder)
+
+# task 4
+print("\nTask #4\n")
+
+matrix = [[1,4,7], [21,19,5], [6,11,9]]
+
+matrix_sum = float(0)
+
+for i in range(0, 3):
+    for j in range(0,3):
+        matrix_sum += matrix[i][j]
+
+matrix_avarage = matrix_sum / 9
+
+print("Matrix avarage = ", matrix_avarage)
+
+# task 5
+print("\nTask #5\n")
+
+first_number_t4 = natural("Input first number > 0: ")
+second_number_t4 = natural("Input first number > 0: ")
+
+answer = task_5(first_number_t4, second_number_t4)
+
+print("Answer = ", answer)
+
+
