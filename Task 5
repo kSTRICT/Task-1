@@ -1,0 +1,84 @@
+from tkinter import *
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+def delete():
+    selection = directory_select_listbox.curselection()
+    directory_select_listbox.delete(selection[0])
+
+
+def add():
+    new_directory = directory_entry.get()
+    directory_select_listbox.insert(0, new_directory)
+
+
+def checkbutton_changed(enabled):
+    showinfo(title="Info", message=enabled.get())
+
+
+root = Tk()
+root.title("Fraps screenshots")
+root.geometry("1000x500")
+root.columnconfigure(index=1, weight=0)
+root.columnconfigure(index=1, weight=0)
+root.rowconfigure(index=1, weight=0)
+root.rowconfigure(index=1, weight=0)
+root.rowconfigure(index=1, weight=0)
+
+row_count = 0
+
+header1 = ttk.Label(text="Оберiть папку для збереження:")
+header1.grid(row=row_count, column=0, padx=5, pady=5)
+row_count += 1
+
+
+directory_entry = ttk.Entry()
+directory_entry.grid(column=0, row=row_count, padx=6, pady=6, sticky=EW)
+ttk.Button(text="Створити папку на диску С", command=add).grid(column=1, row=row_count, padx=6, pady=6, sticky=EW)
+
+row_count += 1
+
+directory_select_listbox = Listbox()
+directory_select_listbox.grid(row=row_count, column=0,  sticky=EW, padx=5, pady=5)
+
+
+directory_select_listbox.insert(END, "Робочий стiл")
+directory_select_listbox.insert(END, "Диск С")
+
+ttk.Button(text="Видалити", command=delete).grid(row=row_count, column=1, padx=5, pady=5)
+
+capture_settings = ttk.Label(text= "Налаштування захвату екрану:\n\n\n")
+capture_settings.grid(row=row_count, column=2, padx=5, pady=5)
+enabled1 = StringVar()
+enabled2 = StringVar()
+
+enabled_checkbutton1 = ttk.Checkbutton(text="Додати оверлей фрейм рейту на скрiншотах", variable=enabled1).grid(row=row_count, column=2, padx=5, pady=5)
+# enabled_checkbutton1
+# row_count += 1
+enabled_checkbuton2 = ttk.Checkbutton(text="Оновлювати захват экрану кожнi 10 секунд?", variable=enabled2).grid(row=row_count, column=3, padx=5, pady=5)
+# enabled_checkbutton2
+row_count += 1
+
+header2 = ttk.Label(text="Гаряча клавiша для запису:")
+header2.grid(row=row_count, column=0, padx=5, pady=5)
+row_count += 1
+hot_key1_entry = ttk.Entry()
+hot_key1_entry.grid(row=row_count, column=0, padx=5, pady=5)
+row_count += 1
+
+
+
+format_select = [".bmp", ".jpg", ".png", ".tga"]
+selected_format = StringVar()
+
+header3 = ttk.Label(text="Оберiть формат зображень:")
+header3.grid(row=row_count, column=0, padx=5, pady=5, sticky=W)
+row_count += 1
+
+
+
+
+for lang in format_select:
+    lang_btn = ttk.Radiobutton(text=lang, value=lang, variable=selected_format)
+    lang_btn.grid(row=row_count, column=0, padx=5, pady=5, sticky=W)
+    row_count += 1
+root.mainloop()
